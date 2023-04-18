@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+
+  backend:
+    build: ./Backend
+    image: sms-backend:t1
+    mem_limit: 700m
+    ports:
+      - "7000:7000"
+    networks:
+      - sms
+
+  frontend:
+    build: ./Frontend
+    image: sms-frontend:t1
+    ports:
+      - "3000:3000"
+    networks:
+      - sms
+    # depends_on:
+    #   - naming-server
+
+networks:
+  sms:
